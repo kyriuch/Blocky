@@ -52,9 +52,7 @@ methodmap BlockyBlockMethods
         Format(model, sizeof model, "%s%s.mdl", MODELS_DIR, BlocksFiles[CurrentBlockIndex[client]]);
         SetEntityModel(entIndex, model);
 
-        float rotation[3] = {0.0, 0.0, 0.0};
-        TeleportEntity(entIndex, blockPosition, rotation, NULL_VECTOR);
-
+        TeleportEntity(entIndex, blockPosition, CurrentBlockRotation[client], NULL_VECTOR);
         DispatchSpawn(entIndex);
         SetEntityMoveType(entIndex, MOVETYPE_NONE);
         SetEntityRenderMode(entIndex, RENDER_TRANSCOLOR);

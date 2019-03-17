@@ -9,6 +9,8 @@
 #include "blocky-menu.sp"
 #include "blocky-main-menu.sp"
 #include "blocky-select-block-menu.sp"
+#include "blocky-properties-menu.sp"
+#include "blocky-properties-rotation-menu.sp"
 
 public Plugin PluginInformation =
 {

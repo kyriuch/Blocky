@@ -11,6 +11,7 @@ public Action MainMenuAction(int client, int args)
 
     menu.AddItem("", "Select Block");
     menu.AddItem("", "Place Block");
+    menu.AddItem("", "Set Properties");
 
     menu.Display(client, 0);
 
@@ -39,5 +40,6 @@ public void HandleMainMenuSelect(int param1, int param2)
             blockyBlockMethods.PlaceBlock(param1);
             MainMenuAction(param1, 0);
         }
+        case 2: PropertiesMenuAction(param1, 0);
     }
 }
