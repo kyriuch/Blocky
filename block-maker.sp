@@ -22,13 +22,19 @@ public void OnPluginStart()
     RegConsoleCmd("place_block", PlaceBlockAction);
 }
 
+public float[] GetPos() {
+    float x[3];
+
+    return x;
+}
+
 public Action PlaceBlockAction(int client, int args) 
 {
     float blockPosition[3];
 
-    Block block;
-    block.FindAndSetBlockPosition(client, blockPosition);
-    int entIndex = block.PlaceBlockAtPositionWithModel(blockPosition, "models/blockbuilder/awp.mdl");
+    BlocksMethods blocksMethods;
+    blocksMethods.FindAndSetBlockPosition(client, blockPosition);
+    int entIndex = blocksMethods.PlaceBlockAtPositionWithModel(blockPosition, "models/blockbuilder/awp.mdl");
     PrintToChat(client, "Ent spawned %d", entIndex);
 
     return Plugin_Handled;

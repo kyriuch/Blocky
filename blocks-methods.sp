@@ -20,7 +20,7 @@ public void AddFileWithAnExtension(char[] fileName, char[] extension) {
     AddFileToDownloadsTable(wholeName);
 }
 
-methodmap Block {
+methodmap BlocksMethods {
 
     public void FindAndSetBlockPosition(int client, float blockPosition[3]) {
         float clientEyesDirection[3], direction[3];
