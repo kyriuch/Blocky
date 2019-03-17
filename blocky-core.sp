@@ -4,6 +4,7 @@
 
 #include "blocky-blocks-data.sp"
 #include "blocky-state.sp"
+#include "blocky-global.sp"
 #include "blocky-block-methods.sp"
 
 #include "blocky-menu.sp"

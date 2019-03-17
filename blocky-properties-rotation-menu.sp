@@ -8,8 +8,8 @@ public Action PropertiesRotationMenuAction(int client, int args)
 
     for(int i = 0; i < sizeof CurrentBlockRotation[]; i++) 
     {
-        char menuItem[8];
-        Format(menuItem, sizeof menuItem, "%f", CurrentBlockRotation[client][i]);
+        char menuItem[12];
+        Format(menuItem, sizeof menuItem, "%s: %f", ComponentNames[i], CurrentBlockRotation[client][i]);
         menu.AddItem("", menuItem);
     }
 
