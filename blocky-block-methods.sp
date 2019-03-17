@@ -56,7 +56,7 @@ methodmap BlockyBlockMethods
         DispatchSpawn(entIndex);
         SetEntityMoveType(entIndex, MOVETYPE_NONE);
         SetEntityRenderMode(entIndex, RENDER_TRANSCOLOR);
-        SetEntityRenderColor(entIndex, 255, 255, 255, 255);
+        SetEntityRenderColor(entIndex, 255, 255, 255, CurrentBlockTrasparency[client]);
         Entity_DisableMotion(entIndex);
     }
 

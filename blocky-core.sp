@@ -34,3 +34,8 @@ public void OnPluginStart()
 
     blockyMenu.RegisterMenus();
 }
+
+public void OnClientConnected(int client)
+{
+    ResetClientState(client);
+}

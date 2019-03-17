@@ -2,18 +2,25 @@
 
 public Action PropertiesRotationMenuAction(int client, int args) 
 {
-    Menu menu = new Menu(PropertiesRotationMenuHandler);
+    Panel panel = new Panel();
 
-    menu.SetTitle("[Blocky] Block Rotation");
+    panel.SetTitle("[Blocky] Block Rotation");
 
     for(int i = 0; i < sizeof CurrentBlockRotation[]; i++) 
     {
-        char menuItem[12];
-        Format(menuItem, sizeof menuItem, "%s: %f", ComponentNames[i], CurrentBlockRotation[client][i]);
-        menu.AddItem("", menuItem);
+        char panelItem[16];
+        Format(panelItem, sizeof panelItem, "%s: %f", ComponentNames[i], CurrentBlockRotation[client][i]);
+        panel.DrawItem(panelItem);
     }
 
-    menu.Display(client, 0);
+    panel.DrawText("\n\n ");
+    panel.CurrentKey = 8;
+    panel.DrawItem("Back");
+    panel.DrawItem("Exit");
+
+    panel.Send(client, PropertiesRotationMenuHandler, 0);
+
+    delete panel;
 
     return Plugin_Handled;
 }
@@ -24,12 +31,19 @@ public int PropertiesRotationMenuHandler(Menu menu, MenuAction action, int param
     {
         case MenuAction_Select: HandlePropertiesRotationMenuSelect(param1, param2);
         case MenuAction_Cancel: PrintToServer("Client %d's menu was cancelled. Reason: %d.", param1, param2);
-        case MenuAction_End: delete menu;
     }
 }
 
 public void HandlePropertiesRotationMenuSelect(int param1, int param2)
 {
-    ExpectInput(param1, Rotation, param2);
-    PropertiesRotationMenuAction(param1, 0);
+    switch(param2)
+    {
+        case 1, 2, 3:
+        {
+            ExpectInput(param1, Rotation, param2 - 1);
+            PrintToChat(param1, "[Blocky] Provide value in the chat.");
+            PropertiesRotationMenuAction(param1, 0);
+        }
+        case 8: PropertiesMenuAction(param1, 0);
+    }
 }
