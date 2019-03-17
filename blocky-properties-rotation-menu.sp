@@ -13,7 +13,7 @@ public Action PropertiesRotationMenuAction(int client, int args)
         panel.DrawItem(panelItem);
     }
 
-    panel.DrawText("\n\n ");
+    panel.DrawText("\n ");
     panel.CurrentKey = 8;
     panel.DrawItem("Back");
     panel.DrawItem("Exit");
