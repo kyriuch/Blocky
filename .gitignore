@@ -1,4 +1,3 @@
 *
 !.gitignore
-!block-maker.sp
-!blocks-methods.sp
+!blocky-*
