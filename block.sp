@@ -5,8 +5,12 @@
 #include <halflife>
 
 char blocks[][] = {
-    "models/blockbuilder/awp"
+    "models/blockbuilder/awp",
 };
+
+char materials[][] = {
+    "materials/models/blockbuilder/awp"
+}
 
 public void AddFileWithAnExtension(char[] fileName, char[] extension) {
     char wholeName[128];
@@ -57,6 +61,11 @@ methodmap Block {
             char buffer[128];
             Format(buffer, sizeof(buffer), "%s.mdl", blocks[i]);
             PrecacheModel(buffer);
+        }
+
+        for(int i = 0; i < sizeof(materials); i++) {
+            AddFileWithAnExtension(materials[i], ".vtf");
+            AddFileWithAnExtension(materials[i], ".vmt");
         }
     }
 }
