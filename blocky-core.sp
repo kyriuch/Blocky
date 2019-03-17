@@ -1,6 +1,4 @@
 #include <sourcemod>
-#include <sdktools_functions>
-#include <sdktools_engine>
 
 #include "blocky-blocks-data.sp"
 #include "blocky-state.sp"
