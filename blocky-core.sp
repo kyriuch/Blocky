@@ -1,7 +1,7 @@
 #include <sourcemod>
 
-#include "blocky-blocks-data.sp"
 #include "blocky-state.sp"
+#include "blocky-blocks-data.sp"
 #include "blocky-global.sp"
 #include "blocky-block-methods.sp"
 
@@ -24,6 +24,7 @@ public void OnMapStart() {
     BlockyBlockMethods blockyBlockMethod;
 
     blockyBlockMethod.PrepareDownloadsTableAndPrecacheModels();
+    InitBlockEntitiesList();
 }
 
 public void OnPluginStart() 
@@ -31,7 +32,9 @@ public void OnPluginStart()
     BlockyMenu blockyMenu;
 
     blockyMenu.RegisterMenus();
+
     HookEvent("round_start", RoundStartAction, EventHookMode_Pre);
+    HookEvent("round_end", RoundEndAction, EventHookMode_Pre);
 }
 
 public void OnClientConnected(int client)
@@ -42,4 +45,8 @@ public void OnClientConnected(int client)
 public Action RoundStartAction(Event event, const char[] name, bool dontBroadcast)
 {
     CheckImmortalityAndNoclip();
+}
+
+public Action RoundEndAction(Event event, const char[] name, bool dontBroadcast)
+{
 }

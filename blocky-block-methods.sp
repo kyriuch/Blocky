@@ -58,6 +58,8 @@ methodmap BlockyBlockMethods
         SetEntityRenderMode(entIndex, RENDER_TRANSCOLOR);
         SetEntityRenderColor(entIndex, 255, 255, 255, CurrentBlockTrasparency[client]);
         Entity_DisableMotion(entIndex);
+
+        AddBlockEntity(entIndex, client);
     }
 
     public void PrepareDownloadsTableAndPrecacheModels() 
