@@ -56,11 +56,7 @@ public void ToggleNoclip(int client)
 {
     HasNoclip[client] = !HasNoclip[client];
 
-    switch(HasNoclip[client])
-    {
-        case true: SetEntityMoveType(client, MOVETYPE_NOCLIP);
-        case false: SetEntityMoveType(client, MOVETYPE_WALK);
-    }
+    SetRightNoclipState(client);
 
     MainMenuAction(client, 0);
 }
@@ -69,11 +65,7 @@ public void ToggleImmortality(int client)
 {
     IsImmortal[client] = !IsImmortal[client];
 
-    switch(IsImmortal[client])
-    {
-        case true: SetEntProp(client, Prop_Data, "m_takedamage", 0, 1);
-        case false: SetEntProp(client, Prop_Data, "m_takedamage", 2, 1);
-    }
+    SetRightImmortalityState(client);
 
     MainMenuAction(client, 0);
 }

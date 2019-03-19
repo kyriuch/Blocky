@@ -31,9 +31,15 @@ public void OnPluginStart()
     BlockyMenu blockyMenu;
 
     blockyMenu.RegisterMenus();
+    HookEvent("round_start", RoundStartAction, EventHookMode_Pre);
 }
 
 public void OnClientConnected(int client)
 {
     ResetClientState(client);
+}
+
+public Action RoundStartAction(Event event, const char[] name, bool dontBroadcast)
+{
+    CheckImmortalityAndNoclip();
 }

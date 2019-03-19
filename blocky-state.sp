@@ -1,3 +1,5 @@
+#include <clients>
+
 int CurrentBlockIndex[MAXPLAYERS + 1];
 float CurrentBlockRotation[MAXPLAYERS + 1][3];
 int CurrentBlockTrasparency[MAXPLAYERS + 1];
@@ -14,7 +16,8 @@ enum
     Transparency
 }
 
-public void ResetClientState(int client) {
+public void ResetClientState(int client) 
+{
     CurrentBlockIndex[client] = 0;
     CurrentBlockRotation[client][0] = 0.0;
     CurrentBlockRotation[client][1] = 0.0;
@@ -23,4 +26,34 @@ public void ResetClientState(int client) {
     ExpectingInput[client] = false;
     HasNoclip[client] = false;
     IsImmortal[client] = false;
+}
+
+public void CheckImmortalityAndNoclip() 
+{
+    for(int i = 1; i <= MAXPLAYERS; i++) 
+    {
+        if(IsClientConnected(i))
+        {
+            SetRightImmortalityState(i);
+            SetRightNoclipState(i);
+        }
+    }
+}
+
+public void SetRightImmortalityState(int client)
+{
+    switch(IsImmortal[client])
+    {
+        case true: SetEntProp(client, Prop_Data, "m_takedamage", 0, 1);
+        case false: SetEntProp(client, Prop_Data, "m_takedamage", 2, 1);
+    }
+}
+
+public void SetRightNoclipState(int client)
+{
+    switch(HasNoclip[client])
+    {
+        case true: SetEntityMoveType(client, MOVETYPE_NOCLIP);
+        case false: SetEntityMoveType(client, MOVETYPE_WALK);
+    }
 }
